@@ -23,3 +23,11 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
+header .top-menu {
+  display: flex;
+}
+
+header .top-menu .menu-item {
+  margin: 0 15px;
+}

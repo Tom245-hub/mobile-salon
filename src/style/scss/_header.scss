@@ -1,4 +1,11 @@
 header {
     display: flex;
     justify-content: space-between;
+
+    .top-menu {
+        display: flex;
+        .menu-item {
+            margin: 0 15px;
+        }
+    }
 }

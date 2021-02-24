@@ -6,12 +6,11 @@ const Header = () => {
         <header>
             <div>Logo</div>
             <div>
-                <ul>
-                    <li>O nas</li>
-                    <li>Usługi</li>
-                    <li>Stylistki</li>
-                    <li>Blog</li>
-
+                <ul className="top-menu">
+                    <li className="menu-item">O nas</li>
+                    <li className="menu-item">Usługi</li>
+                    <li className="menu-item">Stylistki</li>
+                    <li className="menu-item">Blog</li>
                 </ul>
             </div>
             <div>Zamówienie</div>
