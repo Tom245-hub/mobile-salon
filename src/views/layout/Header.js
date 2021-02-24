@@ -3,9 +3,19 @@ import React from 'react';
 const Header = () => {
 
     return (
-        <div>
-            <h1>Header</h1>
-        </div>
+        <header>
+            <div>Logo</div>
+            <div>
+                <ul>
+                    <li>O nas</li>
+                    <li>Usługi</li>
+                    <li>Stylistki</li>
+                    <li>Blog</li>
+
+                </ul>
+            </div>
+            <div>Zamówienie</div>
+        </header>
     )
 }
 
