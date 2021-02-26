@@ -1,0 +1,16 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.row__services{
+    top: 50%;
+    transform: translateY(-50%);
+    justify-content: center;
+    position: absolute;
+}
+
+.row__orderInfo {
+    justify-content: center;
+}

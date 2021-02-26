@@ -1,0 +1,38 @@
+.picture__logo {
+    height: 75px;
+}
+
+.picture__slide {
+    width: 100%;
+    position: relative;
+}
+
+.picture__services {
+    width: 100%;
+    margin: 0 0 15px 0;
+}
+
+.picture__orderinfo {
+    width: 70%;
+    margin: 30px 15%;
+}
+
+.picture__team {
+    width: 75%;
+    position: relative;
+    box-shadow: 0px 0px 35px 0px rgb(105, 105, 105);
+    &.picture__team--left {
+        top: 100px;
+        left: 180px;
+        transition: opacity 1s ease-in-out;
+        &:hover{
+            
+            z-index: 5;
+        }
+    }
+    &.picture__team--right {
+        width: 60%;
+        top: -150px;
+        left: 50px;
+    }
+}
