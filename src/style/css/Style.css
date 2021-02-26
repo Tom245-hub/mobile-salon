@@ -1,5 +1,5 @@
 @import url("https://use.typekit.net/ovo1sqy.css");
-body {
+body, ul, li, h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
 }
@@ -12,17 +12,8 @@ a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-}
-
 ul li {
   list-style: none;
-}
-
-body, ul, li, h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-  padding: 0;
 }
 
 body, h1, h2, h3, h4, h5, h6, p, a, a:hover, input {
@@ -69,38 +60,71 @@ p {
   font-size: 0.9rem;
 }
 
-.row__top {
-  background: #f4ebf2;
-  padding: 10px 0;
-  justify-content: center;
-  align-items: center;
-}
-
-.row__menu {
-  justify-content: space-around;
-  align-items: center;
-}
-
-.header-container {
-  width: 100%;
-  margin: 5vh 0;
-  text-align: center;
-}
-
-.top-menu {
+header {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  list-style: none;
-  padding: 0px;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 10vh;
+  min-height: 80px;
 }
 
-.top-menu li {
-  margin: 20px 50px;
+header .top-menu {
+  display: flex;
 }
 
-.top-menu li a, .top-menu li a:hover {
-  text-decoration: none;
+header .top-menu li {
+  margin: 0 15px;
+}
+
+header .top-menu li a {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+header .top-menu li .top-submenu.hide {
+  display: none;
+}
+
+header .user-container {
+  display: flex;
+  height: 100%;
+}
+
+header .user-container .login-box {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 15px;
+}
+
+header .user-container .login-box .login-text {
+  color: #37173d;
+  font-size: 18px;
+  font-weight: 400;
+  transition: 0.3s;
+}
+
+header .user-container .login-box .login-text:hover {
+  color: #fc4945;
+}
+
+header .user-container .reservation-box {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background: #37173d;
+  padding: 0 15px;
+  transition: 0.3s;
+}
+
+header .user-container .reservation-box:hover {
+  background: #fc4945;
+}
+
+header .user-container .reservation-box .reservation-text {
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .bg__services {
