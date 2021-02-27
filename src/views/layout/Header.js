@@ -8,12 +8,20 @@ import { faSignInAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
 
+
+
     const handleMouseEnter = (e) => {
         if (e.target.parentElement.childElementCount >= 1) {
-            if (e.target.parentElement.childNodes[1].classList.contains("hide")) {
-                e.target.parentElement.childNodes[1].classList.remove("hide");
-                e.target.parentElement.childNodes[1].classList.add("active");
+            if (e.target.parentElement.lastChild.classList.contains("hide")) {
+                e.target.parentElement.lastChild.classList.remove("hide");
             }
+        }
+    }
+
+    const handleMouseLeave = (e) => {
+        if (!e.target.classList.contains("hide")) {
+
+            e.target.classList.add("hide");
         }
     }
 
@@ -22,16 +30,32 @@ const Header = () => {
             <img className="picture__logo" src={logo} alt="mobile_salon_logo" />
             <nav className="top-menu">
                 <li>
-                    <Link onMouseEnter={handleMouseEnter} to="#">Usługi <FontAwesomeIcon icon={faChevronDown} /></Link>
-                    <ul className="top-submenu hide">
+                    <Link to="#" onMouseEnter={handleMouseEnter}>Usługi <FontAwesomeIcon icon={faChevronDown} /></Link>
+                    <ul className="top-submenu hide" onMouseLeave={handleMouseLeave}>
                         <li>Fryzury ślubne</li>
                         <li>Makijaże ślubne</li>
                         <li>Fryzury okazyjne</li>
                         <li>Makijaże okazyjne</li>
                     </ul>
                 </li>
-                <li><Link to="#">Stylistki <FontAwesomeIcon icon={faChevronDown} /></Link></li>
-                <li><Link to="#">Blog <FontAwesomeIcon icon={faChevronDown} /></Link></li>
+                <li>
+                    <Link to="#" onMouseEnter={handleMouseEnter}>Stylistki <FontAwesomeIcon icon={faChevronDown} /></Link>
+                    <ul className="top-submenu hide" onMouseLeave={handleMouseLeave}>
+                        <li>Warszawa</li>
+                        <li>Kraków</li>
+                        <li>Wrocław</li>
+                        <li>Poznań</li>
+                        <li>Gdańsk</li>
+                    </ul>
+                </li>
+                <li>
+                    <Link to="#" onMouseEnter={handleMouseEnter}>Blog <FontAwesomeIcon icon={faChevronDown} /></Link>
+                    <ul className="top-submenu hide" onMouseLeave={handleMouseLeave}>
+                        <li>Najnowsze artykuły</li>
+                        <li>Trendy fryzur ślubnych 2021</li>
+                        <li>Jak przygotować się do wizyty makijażystki?</li>
+                    </ul>
+                </li>
             </nav>
 
 
