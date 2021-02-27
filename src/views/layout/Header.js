@@ -1,28 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../../images/logo/mobile-salon-logo.png';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-
 const Header = () => {
+    const [active, setActive] = useState(0);
 
-
-
-    const handleMouseEnter = (e) => {
-        if (e.target.parentElement.childElementCount >= 1) {
-            if (e.target.parentElement.lastChild.classList.contains("hide")) {
-                e.target.parentElement.lastChild.classList.remove("hide");
-            }
-        }
+    const handleMouseEnter = (id) => {
+        setActive(id);
     }
 
-    const handleMouseLeave = (e) => {
-        if (!e.target.classList.contains("hide")) {
-
-            e.target.classList.add("hide");
-        }
+    const handleMouseLeave = () => {
+        setActive(0);
     }
 
     return (
@@ -30,8 +21,8 @@ const Header = () => {
             <img className="picture__logo" src={logo} alt="mobile_salon_logo" />
             <nav className="top-menu">
                 <li>
-                    <Link to="#" onMouseEnter={handleMouseEnter}>Usługi <FontAwesomeIcon icon={faChevronDown} /></Link>
-                    <ul className="top-submenu hide" onMouseLeave={handleMouseLeave}>
+                    <Link to="#" onMouseEnter={() => handleMouseEnter(1)}>Usługi <FontAwesomeIcon icon={faChevronDown} /></Link>
+                    <ul className={"top-submenu " + (active === 1 ? "active" : "")} onMouseLeave={handleMouseLeave}>
                         <li>Fryzury ślubne</li>
                         <li>Makijaże ślubne</li>
                         <li>Fryzury okazyjne</li>
@@ -39,8 +30,8 @@ const Header = () => {
                     </ul>
                 </li>
                 <li>
-                    <Link to="#" onMouseEnter={handleMouseEnter}>Stylistki <FontAwesomeIcon icon={faChevronDown} /></Link>
-                    <ul className="top-submenu hide" onMouseLeave={handleMouseLeave}>
+                    <Link to="#" onMouseEnter={() => handleMouseEnter(2)}>Stylistki <FontAwesomeIcon icon={faChevronDown} /></Link>
+                    <ul className={"top-submenu " + (active === 2 ? "active" : "")} onMouseLeave={handleMouseLeave}>
                         <li>Warszawa</li>
                         <li>Kraków</li>
                         <li>Wrocław</li>
@@ -49,16 +40,14 @@ const Header = () => {
                     </ul>
                 </li>
                 <li>
-                    <Link to="#" onMouseEnter={handleMouseEnter}>Blog <FontAwesomeIcon icon={faChevronDown} /></Link>
-                    <ul className="top-submenu hide" onMouseLeave={handleMouseLeave}>
+                    <Link to="#" onMouseEnter={() => handleMouseEnter(3)}>Blog <FontAwesomeIcon icon={faChevronDown} /></Link>
+                    <ul className={"top-submenu " + (active === 3 ? "active" : "")} onMouseLeave={handleMouseLeave}>
                         <li>Najnowsze artykuły</li>
                         <li>Trendy fryzur ślubnych 2021</li>
                         <li>Jak przygotować się do wizyty makijażystki?</li>
                     </ul>
                 </li>
             </nav>
-
-
 
             <div className="user-container">
                 <Link className="login-box" to="#">

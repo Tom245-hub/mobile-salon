@@ -92,10 +92,11 @@ header .top-menu li .top-submenu {
   top: 80px;
   left: 0;
   z-index: 1;
+  display: none;
 }
 
-header .top-menu li .top-submenu.hide {
-  display: none;
+header .top-menu li .top-submenu.active {
+  display: flex;
 }
 
 header .user-container {
