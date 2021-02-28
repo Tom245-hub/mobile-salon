@@ -5,47 +5,81 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
+import imageMakeup from '../../images/services/makijaze-slubne-mobile-salon.jpg';
+
+
 const Header = () => {
     const [active, setActive] = useState(0);
+    const [bgHeader, setBgHeader] = useState(false);
 
     const handleMouseEnter = (id) => {
         setActive(id);
+        setBgHeader(true);
     }
 
     const handleMouseLeave = () => {
         setActive(0);
+        setBgHeader(false);
     }
 
     return (
-        <header>
+        <header className={bgHeader ? "bg-purple" : ""}>
             <img className="picture__logo" src={logo} alt="mobile_salon_logo" />
             <nav className="top-menu">
                 <li>
                     <Link to="#" onMouseEnter={() => handleMouseEnter(1)}>Usługi <FontAwesomeIcon icon={faChevronDown} /></Link>
-                    <ul className={"top-submenu " + (active === 1 ? "active" : "")} onMouseLeave={handleMouseLeave}>
-                        <li>Fryzury ślubne</li>
-                        <li>Makijaże ślubne</li>
-                        <li>Fryzury okazyjne</li>
-                        <li>Makijaże okazyjne</li>
-                    </ul>
+                    <div className={"submenu-container active" + (active === 1 ? "active" : "")} onMouseLeave={handleMouseLeave}>
+                        <ul className="top-submenu">
+                            <li>Fryzury ślubne</li>
+                            <li>Makijaże ślubne</li>
+                            <li>Fryzury okazyjne</li>
+                            <li>Makijaże okazyjne</li>
+                        </ul>
+                        <div className="box">
+                            <div className="image-container">
+                                <div className="image-box">
+                                    <img src={imageMakeup} alt="" className="image" />
+                                </div>
+                            </div>
+
+                            <h4>Makijaże ślubne</h4>
+                            <p>Bądź piękna na swoim ślubie</p>
+                        </div>
+                        <div className="box">
+                            <div className="image-container">
+                                <div className="image-box">
+                                    <img src={imageMakeup} alt="" className="image" />
+                                </div>
+                            </div>
+
+                            <h4>Fryzury ślubne</h4>
+                            <p>Bądź piękna na swoim ślubie</p>
+                        </div>
+
+                    </div>
+
                 </li>
                 <li>
                     <Link to="#" onMouseEnter={() => handleMouseEnter(2)}>Stylistki <FontAwesomeIcon icon={faChevronDown} /></Link>
-                    <ul className={"top-submenu " + (active === 2 ? "active" : "")} onMouseLeave={handleMouseLeave}>
-                        <li>Warszawa</li>
-                        <li>Kraków</li>
-                        <li>Wrocław</li>
-                        <li>Poznań</li>
-                        <li>Gdańsk</li>
-                    </ul>
+                    <div className={"submenu-container " + (active === 2 ? "active" : "")} onMouseLeave={handleMouseLeave}>
+                        <ul className="top-submenu">
+                            <li>Warszawa</li>
+                            <li>Kraków</li>
+                            <li>Wrocław</li>
+                            <li>Poznań</li>
+                            <li>Gdańsk</li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <Link to="#" onMouseEnter={() => handleMouseEnter(3)}>Blog <FontAwesomeIcon icon={faChevronDown} /></Link>
-                    <ul className={"top-submenu " + (active === 3 ? "active" : "")} onMouseLeave={handleMouseLeave}>
-                        <li>Najnowsze artykuły</li>
-                        <li>Trendy fryzur ślubnych 2021</li>
-                        <li>Jak przygotować się do wizyty makijażystki?</li>
-                    </ul>
+                    <div className={"submenu-container " + (active === 3 ? "active" : "")} onMouseLeave={handleMouseLeave}>
+                        <ul className="top-submenu">
+                            <li>Najnowsze artykuły</li>
+                            <li>Trendy fryzur ślubnych 2021</li>
+                            <li>Jak przygotować się do wizyty makijażystki?</li>
+                        </ul>
+                    </div>
                 </li>
             </nav>
 
@@ -57,7 +91,7 @@ const Header = () => {
                     <h3 className="reservation-text">ZAREZERWUJ</h3>
                 </Link>
             </div>
-        </header>
+        </header >
     )
 }
 
