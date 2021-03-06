@@ -49,7 +49,31 @@ li {
   list-style: none;
 }
 
-.container-header {
+.container-header .row-header-topbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 2vh;
+  min-height: 30px;
+  padding: 0 15px;
+  background: #f1e9e2;
+}
+
+.container-header .row-header-topbar h5 {
+  color: #31303b;
+  font-weight: 450;
+  margin-right: 15px;
+}
+
+.container-header .row-header-topbar .city {
+  margin-right: 15px;
+}
+
+.container-header .row-header-topbar svg {
+  margin-right: 15px;
+}
+
+.container-header .row-header-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,100 +81,105 @@ li {
   min-height: 80px;
   padding: 0 15px;
   background: #f9f6f3;
+  position: relative;
 }
 
-.container-header .link-image {
+.container-header .row-header-nav .link-image {
   height: 90%;
 }
 
-.container-header .link-image .image-logo {
+.container-header .row-header-nav .link-image .image-logo {
   height: 100%;
 }
 
-.container-header .menu-top {
+.container-header .row-header-nav .menu-top {
   display: flex;
+  height: 100%;
 }
 
-.container-header .menu-top .menu-item {
+.container-header .row-header-nav .menu-top .menu-item {
+  display: flex;
+  align-items: center;
+  height: 100%;
   margin: 0 15px;
 }
 
-.container-header .menu-top .menu-item .item-link {
+.container-header .row-header-nav .menu-top .menu-item .item-link {
   color: #101027;
   font-size: 18px;
   font-weight: 450;
 }
 
-.container-header .menu-top .menu-item .container-submenu {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   min-height: 240px;
-  padding: 30px 100px;
+  padding: 30px 0;
   background: #FFF;
   border-top: 1px solid rgba(45, 46, 112, 0.2);
   border-bottom: 1px solid rgba(45, 46, 112, 0.2);
   position: absolute;
-  top: 80px;
+  top: 100%;
   left: 0;
   z-index: 2;
   overflow: hidden;
   display: none;
 }
 
-.container-header .menu-top .menu-item .container-submenu.active {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu.active {
   display: flex;
 }
 
-.container-header .menu-top .menu-item .container-submenu .submenu-top {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .submenu-top {
   display: flex;
   flex-direction: column;
   margin: 0 15px;
 }
 
-.container-header .menu-top .menu-item .container-submenu .submenu-top .submenu-title {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .submenu-top .submenu-title {
   font-size: 18px;
   font-weight: 150;
 }
 
-.container-header .menu-top .menu-item .container-submenu .submenu-top li {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .submenu-top li {
   margin: 7.5px 0;
 }
 
-.container-header .menu-top .menu-item .container-submenu .submenu-top li .submenu-link {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .submenu-top li .submenu-link {
   font-size: 12px;
   color: lighter(#2d2e70, 20%);
   transition: .6s;
 }
 
-.container-header .menu-top .menu-item .container-submenu .submenu-top li .submenu-link:hover {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .submenu-top li .submenu-link:hover {
   color: #2d2e70;
   transition: .6s;
   box-shadow: 0 -1px 0 0 #2d2e70 inset;
 }
 
-.container-header .menu-top .menu-item .container-submenu .box-service {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .box-service {
   width: 200px;
   margin: 15px;
 }
 
-.container-header .menu-top .menu-item .container-submenu .box-service .box-title {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .box-service .box-title {
   color: #1a191f;
   font-size: 18px;
   font-weight: 450;
   margin: 15px 0;
 }
 
-.container-header .menu-top .menu-item .container-submenu .box-service p {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .box-service p {
   color: #31303b;
 }
 
-.container-header .menu-top .menu-item .container-submenu .box-service .box-image-big {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .box-service .box-image-big {
   position: relative;
   padding-top: 60%;
 }
 
-.container-header .menu-top .menu-item .container-submenu .box-service .box-image-big .box-image {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .box-service .box-image-big .box-image {
   position: absolute;
   top: 0;
   right: 0;
@@ -159,41 +188,59 @@ li {
   overflow: hidden;
 }
 
-.container-header .menu-top .menu-item .container-submenu .box-service .box-image-big .box-image .image {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .box-service .box-image-big .box-image .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: .4s;
 }
 
-.container-header .menu-top .menu-item .container-submenu .box-service .box-image-big .box-image .image:hover {
+.container-header .row-header-nav .menu-top .menu-item .container-submenu .box-service .box-image-big .box-image .image:hover {
   transform: scale(1.1);
 }
 
-.container-header .box-user {
+.container-header .row-header-nav .box-city {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 200px;
+}
+
+.container-header .row-header-nav .box-city svg {
+  margin-right: 15px;
+}
+
+.container-header .row-header-nav .box-city h5 {
+  font-weight: 450;
+}
+
+.container-header .row-header-nav .box-city h5:hover {
+  cursor: pointer;
+}
+
+.container-header .row-header-nav .box-user {
   display: flex;
   height: 100%;
 }
 
-.container-header .box-user .box-login {
+.container-header .row-header-nav .box-user .box-login {
   display: flex;
   align-items: center;
   height: 100%;
   padding: 0 15px;
 }
 
-.container-header .box-user .box-login .text-login {
+.container-header .row-header-nav .box-user .box-login .text-login {
   color: #2d2e70;
   font-size: 12px;
   font-weight: 400;
   transition: 0.3s;
 }
 
-.container-header .box-user .box-login .text-login:hover {
+.container-header .row-header-nav .box-user .box-login .text-login:hover {
   color: #eb5544;
 }
 
-.container-header .box-user .box-reservation {
+.container-header .row-header-nav .box-user .box-reservation {
   display: flex;
   align-items: center;
   height: 100%;
@@ -202,11 +249,11 @@ li {
   transition: 0.3s;
 }
 
-.container-header .box-user .box-reservation:hover {
+.container-header .row-header-nav .box-user .box-reservation:hover {
   background: #eb5544;
 }
 
-.container-header .box-user .box-reservation .text-reservation {
+.container-header .row-header-nav .box-user .box-reservation .text-reservation {
   color: #FFF;
   font-size: 12px;
   font-weight: 400;
