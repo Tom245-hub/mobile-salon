@@ -9,9 +9,9 @@ class StylistApiController extends DBParams
 
         $stmt = $this->DBConnect()->query('SELECT * FROM stylists');
 
-        $response = [];
+        $stylistList = [];
         while($row = $stmt->fetch()) {
-            $response[] = [
+            $stylistList[] = [
                 'id_stylist' => $row['id_stylist'],
                 'name' => $row['name'],
                 'image' => $row['image'],
@@ -25,6 +25,9 @@ class StylistApiController extends DBParams
                 'desc' => $row['desc'],
             ];
         };
+
+        $response['stylistList'] = $stylistList;
+        
         echo json_encode($response);
     }
 }

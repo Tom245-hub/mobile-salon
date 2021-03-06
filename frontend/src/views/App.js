@@ -2,6 +2,7 @@ import '../style/css/Style.css';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomeScreen from './home/HomeScreen';
+import StylistListScreen from './stylist/StylistListScreen';
 import Layout from './layout/Layout';
 
 import HairWeddingScreen from './services/HairWeddingScreen';
@@ -15,20 +16,21 @@ import MakeupEventScreen from './services/MakeupEventScreen';
 const App = () => {
   return (
     // <Provider store={store}>
-      <BrowserRouter>
-        <Layout>
-          <Switch>
-            <Route path="/" exact component={HomeScreen} />
-            <Route path="/uslugi/fryzury-slubne" exact component={HairWeddingScreen} />
-            <Route path="/uslugi/makijaze-slubne" exact component={MakeupWeddingScreen} />
-            <Route path="/uslugi/fryzury-okazyjne" exact component={HairEventScreen} />
-            <Route path="/uslugi/makijaze-okazyjne" exact component={MakeupEventScreen} />
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={HomeScreen} />
+          <Route path="/stylistki" exact component={StylistListScreen} />
+          <Route path="/uslugi/fryzury-slubne" exact component={HairWeddingScreen} />
+          <Route path="/uslugi/makijaze-slubne" exact component={MakeupWeddingScreen} />
+          <Route path="/uslugi/fryzury-okazyjne" exact component={HairEventScreen} />
+          <Route path="/uslugi/makijaze-okazyjne" exact component={MakeupEventScreen} />
 
-            {/* <Route path="/stylistki/:idStylist(\d+)-:name" component={StylistScreen} />
+          {/* <Route path="/stylistki/:idStylist(\d+)-:name" component={StylistScreen} />
             <Route path="/zamowienie" exact component={OrderScreen} /> */} */}
           </Switch>
-        </Layout>
-      </BrowserRouter>
+      </Layout>
+    </BrowserRouter>
     // </Provider>
   );
 }

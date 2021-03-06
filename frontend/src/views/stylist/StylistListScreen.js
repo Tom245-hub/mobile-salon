@@ -1,74 +1,63 @@
-// import React { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
-// const StylistListScreen = () => {
+const StylistListScreen = () => {
+    const [stylistList, setStylistList] = useState([]);
+    const getFetch = () => {
+        fetch('http://mobile-salon/controllers/StylistApiController.php', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log('response')
+                setStylistList(response.stylistList)
+            });
+    }
 
-//     const [stylistListCity, setStylistListCity] = useState([]);
+    useEffect(() => {
+        getFetch();
+    }, []);
 
-//     const getFetch = () => {
-//         fetch('http://react-filters/admin/api.php', {
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//         })
-//             .then(response => response.json())
-//             .then(response => {
-//                 setStylistList(result(response))
-//             });
-//     }
+    return (
+        <div className="container-stylist-list-screen">
+            <div className="column-stylist-filter">
 
-//     useEffect(() => {
-//         getFetch();
-//     }, []);
-
-
-//     let cities = [];
-//     stylistList.map((item, index) => { if (!cities.includes(item.city)) { cities.push(item.city) } })
-
-//     const filteringCity = (e) => {
-//         let value = e.target.value
-//         setStylistListCity(stylistList.filter(item => item.city === value))
-//     }
-
-//     let services = [];
-//     stylistList.map((stylist, index) => {
-//         Object.keys(stylist.uslugi).map((service, key) => { if (service && !services.includes(service)) { services.push(service) } })
-//     })
-
-//     const result = () => {
-//         return stylistListCity.map((item, index) => <li key={index}>{item.name}</li>)
-//     }
-
-//     return (
-//         <>
-//             <form >
-
-//                 <div className="row">
-//                     <select className="form-control" onChange={filteringCity}>
-//                         <option value="">Wszystkie miasta</option>
-//                         {cities.map((item, index) => <option key={index} value={item}>{item}</option>)}
-//                     </select>
-//                 </div>
-
-//                 {services.map((service, index) => <div className="row align-items-center"><input type="checkbox" />{service}</div>)}
-
-//                 <div className="row">
-//                     <input placeholder="Wyszukaj..." className="form-control" type="text" />
-//                     <button className="btn btn-secondary" type="submit">Wyszukaj</button>
-//                 </div>
-
-//             </form>
-
-//             <div className="row">
-//                 {result()}
-//             </div>
+                <select className="form-control" >
+                    <option value="">Wszystkie miasta</option>
+                    {stylistList && stylistList.map((item, index) => <option key={index} value={item.city}>{item.city}</option>)}
+                </select>
 
 
-//         </>
-//     );
-// }
+            </div>
+            <div className="column-stylist-result">
+
+            </div>
+            {stylistList &&
+                stylistList.map((stylist, index) =>
+                    <Link key={index} to="#">
+                        <div className="box-stylist">
+                            <div className="box-image-big">
+                                <div className="box-image">
+                                    <img src={stylist.image} alt={stylist.name} className="image" />
+                                </div>
+                            </div>
+                            <h4 className="box-title">{stylist.name}</h4>
+                            <p>{stylist.city}</p>
+                            <button>Zobacz profil</button>
+                        </div>
+                    </Link>
+                )}
+        </div>
+    );
+}
+
+export default StylistListScreen;
 
 
-// export default StylistListScreen
+
+
 
