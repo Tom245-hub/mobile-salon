@@ -3,6 +3,9 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomeScreen from './home/HomeScreen';
 import StylistListScreen from './stylist/StylistListScreen';
+
+import StylistScreen from './stylist/StylistScreen';
+
 import Layout from './layout/Layout';
 
 import HairWeddingScreen from './services/HairWeddingScreen';
@@ -21,6 +24,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={HomeScreen} />
           <Route path="/stylistki" exact component={StylistListScreen} />
+          <Route path="/stylistki/:id" exact component={StylistScreen} />
           <Route path="/uslugi/fryzury-slubne" exact component={HairWeddingScreen} />
           <Route path="/uslugi/makijaze-slubne" exact component={MakeupWeddingScreen} />
           <Route path="/uslugi/fryzury-okazyjne" exact component={HairEventScreen} />

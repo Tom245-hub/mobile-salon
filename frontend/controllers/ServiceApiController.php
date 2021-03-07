@@ -3,15 +3,15 @@
 include '../../config/acl.php';
 include '../../config/database.php';
 
-class StylistApiController extends DBParams
+class ServiceApiController extends DBParams
 {
     public function indexAction(){
 
         $stmt = $this->DBConnect()->query('SELECT * FROM stylists');
 
-        $stylistList = [];
+        $serviceList = [];
         while($row = $stmt->fetch()) {
-            $stylistList[] = [
+            $serviceList[] = [
                 'id_stylist' => $row['id_stylist'],
                 'name'       => $row['name'],
                 'image'      => $row['image'],
@@ -26,12 +26,11 @@ class StylistApiController extends DBParams
             ];
         };
 
-        $response['stylistList'] = $stylistList;
+        $response['serviceList'] = $serviceList;
         
         echo json_encode($response);
     }
 }
 
-$api = new StylistApiController();
+$api = new ServiceApiController();
 echo $api->indexAction();
-
