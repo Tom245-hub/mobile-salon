@@ -1,5 +1,6 @@
 <?php
 
+
 include '../../config/acl.php';
 include '../../config/database.php';
 
@@ -8,6 +9,13 @@ class StylistApiController extends DBParams
     public function indexAction(){
 
         $stmt = $this->DBConnect()->query('SELECT * FROM stylists');
+
+
+        $url = $_SERVER['REQUEST_URI'];
+        if(strstr($url, '?city=')) {
+            parse_str(parse_url($url)['query'], $params);
+        }
+
 
         $stylistList = [];
         while($row = $stmt->fetch()) {
@@ -26,7 +34,9 @@ class StylistApiController extends DBParams
             ];
         };
 
-        $response['stylistList'] = $stylistList;
+        $response['stylists'] = $stylistList;
+        $response['city'] = $params['city'] ?? null;
+        
         
         echo json_encode($response);
     }

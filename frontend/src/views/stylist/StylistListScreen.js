@@ -7,7 +7,11 @@ const StylistListScreen = () => {
     const [stylistList, setStylistList] = useState([]);
 
     const getFetch = () => {
-        fetch('http://mobile-salon/controllers/StylistApiController', {
+        let url = 'http://mobile-salon/controllers/StylistApiController';
+        if (1 > 0) {
+            url += '?' + ('city=krakow')
+        }
+        fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -15,7 +19,7 @@ const StylistListScreen = () => {
         })
             .then(response => response.json())
             .then(response => {
-                setStylistList(response.stylistList)
+                setStylistList(response.stylists)
             });
     }
 
