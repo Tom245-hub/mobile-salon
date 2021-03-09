@@ -10,33 +10,55 @@ class StylistApiController extends DBParams
 
         $stmt = $this->DBConnect()->query('SELECT * FROM stylists');
 
-
         $url = $_SERVER['REQUEST_URI'];
+
         if(strstr($url, '?city=')) {
             parse_str(parse_url($url)['query'], $params);
-        }
 
+            $stylistList = [];
 
-        $stylistList = [];
-        while($row = $stmt->fetch()) {
-            $stylistList[] = [
-                'id_stylist' => $row['id_stylist'],
-                'name'       => $row['name'],
-                'image'      => $row['image'],
-                'services'   => [
-                    'wedding_hair'      => $row['wedding_hair'] == 1 ? true : false,
-                    'wedding_makeup'    => $row['wedding_makeup'] == 1 ? true : false,
-                    'event_hair'        => $row['event_hair'] == 1 ? true : false,
-                    'event_makeup'      => $row['event_makeup'] == 1 ? true : false,
-                ],
-                'city'       => $row['city'],
-                'desc'       => $row['desc'],
-            ];
+            while($row = $stmt->fetch()) {
+
+                $city = $row['city'];
+                $city = str_replace(['ą', 'ć', 'ę', 'ł', 'ń', 'ó', 'ś', 'ź', 'ż'], ['a', 'c', 'e', 'l', 'n', 'o', 's', 'z', 'z'], $city);
+
+                if (strtolower($city) == $params['city']){
+                    $stylistList[] = [
+                        'id_stylist' => $row['id_stylist'],
+                        'name'       => $row['name'],
+                        'image'      => $row['image'],
+                        'services'   => [
+                            'wedding_hair'      => $row['wedding_hair'] == 1 ? true : false,
+                            'wedding_makeup'    => $row['wedding_makeup'] == 1 ? true : false,
+                            'event_hair'        => $row['event_hair'] == 1 ? true : false,
+                            'event_makeup'      => $row['event_makeup'] == 1 ? true : false,
+                        ],
+                        'city'       => $row['city'],
+                        'desc'       => $row['desc'],
+                    ];
+                };
+            };
+
+        } else {
+            $stylistList = [];
+            while($row = $stmt->fetch()) {
+                $stylistList[] = [
+                    'id_stylist' => $row['id_stylist'],
+                    'name'       => $row['name'],
+                    'image'      => $row['image'],
+                    'services'   => [
+                        'wedding_hair'      => $row['wedding_hair'] == 1 ? true : false,
+                        'wedding_makeup'    => $row['wedding_makeup'] == 1 ? true : false,
+                        'event_hair'        => $row['event_hair'] == 1 ? true : false,
+                        'event_makeup'      => $row['event_makeup'] == 1 ? true : false,
+                    ],
+                    'city'       => $row['city'],
+                    'desc'       => $row['desc'],
+                ];
+            };
         };
 
         $response['stylists'] = $stylistList;
-        $response['city'] = $params['city'] ?? null;
-        
         
         echo json_encode($response);
     }

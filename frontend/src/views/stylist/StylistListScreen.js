@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { showAvailableCities, showAvailableServices } from '../../utils/utils'
+import { showAvailableCities, showAvailableServices } from '../../utils/utils';
 
 
 const StylistListScreen = () => {
     const [stylistList, setStylistList] = useState([]);
 
+    const [city, setCity] = useState();
+    console.log(city)
+
     const getFetch = () => {
         let url = 'http://mobile-salon/controllers/StylistApiController';
-        if (1 > 0) {
-            url += '?' + ('city=krakow')
+        if (city) {
+            url += '?city=' + (city).toLowerCase();
         }
         fetch(url, {
             method: 'GET',
@@ -25,16 +28,18 @@ const StylistListScreen = () => {
 
     useEffect(() => {
         getFetch();
-    }, []);
+    }, [city]);
+
+
 
 
     return (
         <div className="container-stylist-list-screen">
             <div className="column-stylist-filter">
 
-                <select>
+                <select onChange={(e) => setCity(e.target.value)}>
                     <option value="">Wszystkie miasta</option>
-                    {stylistList && showAvailableCities(stylistList).map((item, index) => <option key={index} value={item}>{item}</option>)}
+                    {stylistList && showAvailableCities(stylistList).map((item, index) => <option key={index} value={item} >{item}</option>)}
                 </select>
 
                 {stylistList && showAvailableServices(stylistList).map((item, index) => <label key={index}><input type="checkbox" value={item} />{item}</label>)}
